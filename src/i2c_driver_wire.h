@@ -152,6 +152,6 @@ private:
 // extern I2CDriverWire Wire2;     // Pins 24 and 25; SCL2 and SDA2
 
 // Alias for backwards compatibility with Wire.h
-using TwoWire = I2CDriverWire;
+// using TwoWire = I2CDriverWire;
 
 #endif //I2C_DRIVER_WIRE_H
