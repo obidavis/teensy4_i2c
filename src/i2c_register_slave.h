@@ -13,7 +13,7 @@
 #endif
 
 // Needs to be as big as the largest register plus 1 byte for the registry number.
-#define REG_SLAVE_WRITE_BUFFER_LENGTH 9
+#define REG_SLAVE_WRITE_BUFFER_LENGTH 17
 
 class II2CRegisterSlave {
 public:
