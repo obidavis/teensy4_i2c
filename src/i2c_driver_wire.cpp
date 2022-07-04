@@ -1,7 +1,7 @@
 // Copyright © 2019-2020 Richard Gemmell
 // Released under the MIT License. See license.txt. (https://opensource.org/licenses/MIT)
 
-#include "i2c_driver_wire.h"
+#include <i2c_driver_wire.h>
 
 static int toWireResult(I2CError error) {
     if (error == I2CError::ok) return 0;
@@ -134,6 +134,6 @@ void I2CDriverWire::on_receive_wrapper(size_t num_bytes, uint16_t address) {
     }
 }
 
-// I2CDriverWire Wire(Master, Slave);
-// I2CDriverWire Wire1(Master1, Slave1);
-// I2CDriverWire Wire2(Master2, Slave2);
+I2CDriverWire Wire(Master, Slave);
+I2CDriverWire Wire1(Master1, Slave1);
+I2CDriverWire Wire2(Master2, Slave2);
