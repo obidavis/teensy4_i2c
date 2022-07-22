@@ -12,8 +12,8 @@
 #include "imx_rt1060/imx_rt1060_i2c_driver.h"
 #endif
 
-// Needs to be as big as the largest register plus 1 byte for the registry number.
-#define REG_SLAVE_WRITE_BUFFER_LENGTH 17
+// Needs to be as big as the largest register plus 1 byte for the registry number plus 1 for the checksum
+#define REG_SLAVE_WRITE_BUFFER_LENGTH 18
 
 class II2CRegisterSlave {
 public:
