@@ -11,6 +11,16 @@ void I2CRegisterSlave::listen(uint8_t address) {
     wait_for_reg_num();
 }
 
+static bool checksum(uint8_t *data, size_t len)
+{
+    uint8_t sum;
+    for (size_t i = 0; i < len; i++)
+    {
+        sum += data[i];
+    }
+    return ~sum;
+}
+
 void I2CRegisterSlave::after_receive(int len) {
     uint8_t num_bytes = len;
     got_reg_num = !got_reg_num;
@@ -25,7 +35,8 @@ void I2CRegisterSlave::after_receive(int len) {
                 if (copy_len > buffer_size) {
                     copy_len = buffer_size;
                 }
-                memcpy(buffer, rx_buffer + 1, copy_len);
+                if (!checksum(buffer, len))
+                    memcpy(buffer, rx_buffer + 1, copy_len);
             }
             num_bytes = len - 1;
             // else it's not a valid registry. Ignore it.
